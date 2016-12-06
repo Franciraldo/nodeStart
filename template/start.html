@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+<meta charset="UTF-8">
+
+<script>
+	function queryStringToJSON(url) {
+		if (url === '')
+			return '';
+		var pairs = (url || location.search).slice(1).split('&');
+		var result = {};
+		result = pairs.reduce(function(a, b) {
+			var pair = b.split("=");
+			a[pair[0]] = decodeURIComponent(pair[1] || '');
+			return a;
+		}, {});
+
+		return result;
+	}
+
+	function openInNewTab(url) {
+		var q = queryStringToJSON(location.url);
+		var h = (q.height ? q.height : 600);
+		var w = (q.width ? q.width : 500);
+
+		var title = (q.title ? q.title : "App");
+		document.title = title;
+
+		var left = (screen.width - w) / 2;
+		var top = (screen.height - (h + 100)) / 2;
+		var win = window
+				.open(
+						"index.html",
+						'_app',
+						"top="
+								+ top
+								+ ",left="
+								+ left
+								+ ",toolbar=0,location=0,menubar=0,resizable=0,status=0,titlebar=0,width="
+								+ w + ",height=" + h);
+		win.focus();
+	}
+</script>
+</head>
+
+<body onload="openInNewTab()">
+
+</body>
+
+</html>
