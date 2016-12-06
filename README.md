@@ -16,3 +16,7 @@ Arguments:
 	[trayimg:XXX]: Path to custom icon tray (e.g.: trayimg:./app.png, Default: internal icon image).
 	[webview:true|false]: Use WebView or JavaFX embedded browser (e.g.: webview:true, Default: JavaFx).
 	[rest:XXX=URL;XXX2=URL2...]: REST URL´s for internal url forwarding to prevent cross domain errors (e.g.: rest:service1=http://other.domain/services/service1;service2=http://another.domain/services/service2).
+
+Run:
+
+java -classpath .\bin;./lib\jetty-all.jar;./lib\javaee-api-7.0.jar;./lib\servlet-api.jar;./lib\fts-utils.jar;./lib\javatools.jar;./lib\log4j-1.2.9.jar ionicStart.run . shell title:My-App start:index.html
